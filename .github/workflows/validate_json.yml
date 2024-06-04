@@ -1,24 +1,22 @@
 name: Check JSON Schema
-
 on:
   push:
   pull_request: https://github.com/Herand19/BNB/actions/workflows/deploy.yml
-
 jobs:
   validate_json: https://github.com/Herand19/BNB/actions/workflows/validate_json.yml/badge.svg
-    runs-on: actions-runner-linux-x64-2.310.2.tar.gz
-    steps:
+runs-on: actions-runner-linux-x64-2.310.2.tar.gz
+steps:
     - name: Check out repo
       uses: actions/checkout@v2
     - uses: actions/cache@v2
       name: Configure npm caching
       with:
         path: ~/.npm
-        key: ${{ runner.os }}-npm-${{ hashFiles('https://github.com/Herand19/BNB/actions/workflows/validate_json.yml') }}
+        key: ${{ runner.os }}-npm-${{ hashFiles(https://github.com/Herand19/BNB/actions/workflows/validate_json.yml) }}
         restore-keys: |
           ${{ runner.os }}-npm-
     - name: Run JSON Validation
       working-directory: ./tools
-      run: |- actions-runner-linux-x64-2.310.2.tar.gz
+      run:  actions-runner-linux-x64-2.310.2.tar.gz
         https://github.com/actions/runner/releases/download/v2.310.2/actions-runner-linux-x64-2.310.2.tar.gz
         node schemaCheck.js
